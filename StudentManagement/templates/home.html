@@ -1,0 +1,117 @@
+<!-- home.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background: #f4f7fc;
+        }
+
+        .main-box{
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            font-weight: bold;
+            color: #0d6efd;
+        }
+
+        table{
+            margin-top: 20px;
+        }
+
+        .btn-add{
+            float: right;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="main-box">
+
+        <div class="d-flex justify-content-between align-items-center">
+
+            <h1>🎓 Student Management System</h1>
+
+            <a href="/add/" class="btn btn-primary btn-add">
+                + Add Student
+            </a>
+
+        </div>
+
+        <hr>
+
+        <table class="table table-bordered table-hover text-center">
+
+            <thead class="table-dark">
+
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Roll</th>
+                    <th>Course</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for student in students %}
+
+                <tr>
+
+                    <td>{{ student.id }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.roll }}</td>
+                    <td>{{ student.course }}</td>
+                    <td>{{ student.email }}</td>
+
+                    <td>
+
+                        <a href="/delete/{{ student.id }}"
+                           class="btn btn-danger btn-sm">
+
+                           Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+                    <td colspan="6">No Students Found</td>
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
